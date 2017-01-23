@@ -17,7 +17,6 @@ public class Main {
 
 
     public static ArrayList<ArrayList<Room>> createRooms(){
-        //Room[][] rooms = new Room[SIZE][SIZE];
         ArrayList<ArrayList<Room>> rooms = new ArrayList<>();
 
         for(int row = 0; row < SIZE; row++){
@@ -25,7 +24,6 @@ public class Main {
             ArrayList<Room> roomRow = new ArrayList<>();
 
             for(int col=0; col<SIZE; col++){
-                //rooms[row][col] = new Room(row,col);
                 roomRow.add(new Room(row,col));
             }
             rooms.add(roomRow);
@@ -60,7 +58,7 @@ public class Main {
             return neighbors.get(index);
         } else {
             if (firstStop == true){
-                //rooms[row][col].setIsEnd(true);
+                rooms.get(row).get(col).setxEnd(true);
                 firstStop = false;
             }
         }
@@ -102,7 +100,7 @@ public class Main {
         while(createMaze(rooms, nextRoom)) {
         }
         if(firstPath == false){
-            //rooms[startingX][startingY].setIsStart(true);
+            rooms.get(startingX).get(startingY).setoStart(true);
             firstPath = true;
         }
 
@@ -115,7 +113,8 @@ public class Main {
 
         System.out.println("Starting index positions: " + startingX + ":" + startingY);
         System.out.println("The starting and ending position lack Underscores.");
-        //rooms[startingX][startingY].setIsStart(true);
+
+        rooms.get(startingX).get(startingY).setoStart(true);
 
         createMaze(rooms, rooms.get(0).get(0));
 
